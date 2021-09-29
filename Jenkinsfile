@@ -4,7 +4,7 @@ pipeline {
      stage('Hello World') {
         steps {
           sh 'echo Hello World'
-          echo "$JOB_NAME"
+          echo "STARTED: Job "$env.JOB_NAME" "[$env.BUILD_NUMBER]"",
         }
      }   
    }
