@@ -9,9 +9,11 @@ pipeline {
    stage('Email') {
         steps {
           emailext (
-             subject: "STARTED: Job {$env.JOB_NAME} [{$env.BUILD_NUMBER}]",
-             body: '''STARTED: Job '${JOB_NAME} [${BUILD_NUMBER}]': Check console output at ${BUILD_URL}''',
-            to: 'dylan.mehmedovic@concanon.com'
+            subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+            body: """SUCCESSFUL: Job '${JOB_NAME} [${BUILD_NUMBER}]':
+
+            Check console output at ${BUILD_URL}""",
+            to: 'ted.fenn@concanon.com, dylan.mehmedovic@concanon.com'
           )
         }       
      }
