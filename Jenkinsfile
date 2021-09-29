@@ -10,7 +10,7 @@ pipeline {
         steps {
           emailext (
              subject: "STARTED: Job {$env.JOB_NAME} [{$env.BUILD_NUMBER}]",
-             body: '''<p>STARTED: Job '{$env.JOB_NAME} [{$env.BUILD_NUMBER}]':</p> <p>Check console output at "<a href=[${env.BUILD_NUMBER}]>{$env.JOB_NAME} [{$env.BUILD_NUMBER}]"</p>''',
+             body: '''STARTED: Job '{$env.JOB_NAME} [{$env.BUILD_NUMBER}]': Check console output at ${env.BUILD_NUMBER}/{$env.JOB_NAME}/{$env.BUILD_NUMBER}''',
             to: 'dylan.mehmedovic@concanon.com'
           )
         }       
