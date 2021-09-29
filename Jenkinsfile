@@ -4,8 +4,16 @@ pipeline {
      stage('Hello World') {
         steps {
           sh 'echo Hello World'
-          sh 'echo "STARTED: Job "$JOB_NAME" "[$BUILD_NUMBER]""'
         }
      }   
+   stage('Email') {
+        steps {
+          emailext (
+            subject: "STARTED: Job "$JOB_NAME" "[$BUILD_NUMBER]"",
+            body: '''<p>STARTED: Job '"$JOB_NAME" ["$BUILD_NUMBER"]':</p> <p>Check console output at &QUOT;<a href='"$BUILD_URL"'>"$JOB_NAME" ["$BUILD_NUMBER"]</a>&QUOT;</p>''',
+            to: 'dylan.mehmedovic@concanon.com'
+          )
+        }       
+     }
    }
 } 
